@@ -1,16 +1,21 @@
 <template>
-  <div id="app"  class="h-100 overflow-auto d-flex justify-content-center">
-    <div style="width: 80%">
-      <header-vue v-if="showHeader" style="margin-top: 10px">
-      </header-vue>
-      <router-view/>
+  <div id="app" class="h-100 overflow-auto w-100">
+    <div  class="d-flex justify-content-center">
+      <sidebar v-if="showSidebar"></sidebar>
+      <div class="w-100 overflow-auto">
+        <header-vue v-if="showHeader">
+        </header-vue>
+        <router-view style="margin: auto;"/>
+      </div>
     </div>
   </div>
 </template>
 <script>
 import Header from "./common/Header.vue";
+import Sidebar from "@/common/Sidebar.vue";
 import Footer from "./common/Footer.vue";
 import AddProduct from "./components/AddProduct/AddProduct.vue";
+import Login from "@/common/Login.vue";
 import UrlPath from "./constans/path/urlPath";
 export default {
   name: "App",
@@ -19,13 +24,16 @@ export default {
   },
   data: function () {
     return {
-       showHeader: false
+       showHeader: false,
+       showSidebar: false
     }
   },
   components: {
     "header-vue": Header,
     "footer-vue": Footer,
-    "add-product": AddProduct
+    "add-product": AddProduct,
+    "login": Login,
+    "sidebar": Sidebar,
   },
   watch: {
     $route: {
@@ -38,7 +46,13 @@ export default {
   methods: {
     toggleSidebarHeader: function (path) {
       const vm = this
-      vm.showHeader = path !== UrlPath.LOGIN;
+      if (localStorage.getItem('username') === null) {
+        vm.showHeader = false
+        vm.showSidebar= false
+      } else {
+        vm.showHeader = path !== UrlPath.LOGIN;
+        vm.showSidebar = path !== UrlPath.LOGIN;
+      }
     }
   }
 }

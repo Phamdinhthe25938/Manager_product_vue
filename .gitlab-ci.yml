@@ -1,0 +1,15 @@
+stages:
+  - deploy
+variables:
+  - IMAGE_NAME: webapp_manager
+  - CONTAINER_NAME: web_manager_runner
+deploy:
+  image: docker:20.10.16
+  stage: deploy
+  services:
+    - docker:20.10.16-dind
+  script:
+    - docker build -t $IMAGE_NAME .
+    - docker run -d -p 7070:7070 --rm --name $CONTAINER_NAME $IMAGE_NAME
+  only:
+    - main

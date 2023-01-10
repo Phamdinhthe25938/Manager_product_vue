@@ -1,5 +1,5 @@
 <template>
-  <div class="table-title">
+  <div class="table-title" style="margin: 0 !important;">
     <div class="row d-flex justify-content-between" >
       <div class="col-sm-6">
         <h2>Manage <b>Employees</b></h2>
@@ -9,21 +9,6 @@
           <button type="button" @click="changeRouter(menuItem.add)"  class="btn btn-primary">Add</button>
           <button type="button" @click="changeRouter(menuItem.edit)" class="btn btn-success">Edit</button>
       </div>
-<!--      <div class="col-sm-6">-->
-<!--        <a-->
-<!--            href="#addEmployeeModal"-->
-<!--            class="btn btn-success"-->
-<!--            data-toggle="modal"-->
-<!--        ><i class="material-icons">&#xE147;</i>-->
-<!--          <span>Add New Employee</span></a-->
-<!--        >-->
-<!--        <a-->
-<!--            href="#deleteEmployeeModal"-->
-<!--            class="btn btn-danger"-->
-<!--            data-toggle="modal"-->
-<!--        ><i class="material-icons">&#xE15C;</i> <span>Delete</span></a-->
-<!--        >-->
-<!--      </div>-->
     </div>
   </div>
 </template>

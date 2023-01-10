@@ -32,7 +32,10 @@ export default {
     vm.telephone = "9999"
   },
   props: {
-    t1: 333,
+    t1: {
+      type: String,
+
+    },
     t2: null,
   },
   data: function (){

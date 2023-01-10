@@ -90,6 +90,8 @@ export default {
       const vm = this
       if (vm.username === 'admin' && vm.password === 'admin') {
         if (vm.$route.fullPath !== UrlPath.LIST_PRODUCT) {
+          localStorage.setItem('username',vm.username);
+          localStorage.setItem('password',vm.password);
           vm.username = null
           vm.password = null
           vm.$router.push(UrlPath.LIST_PRODUCT)
@@ -118,7 +120,6 @@ export default {
 }
 
 .banner-sec {
-  background: url(https://static.pexels.com/photos/33972/pexels-photo.jpg) no-repeat left bottom;
   background-size: cover;
   min-height: 500px;
   border-radius: 0 10px 10px 0;
